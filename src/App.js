@@ -26,14 +26,36 @@ export default function App() {
     loadData();
   }, []);
 
-    // Filter awards by selected PIs and search text (select all PIs here since no sidebar)
+  const matchesSearch = (award, query) => {
+    if (!query) return true; // no filter if empty query
+  
+    const lowerQuery = query.toLowerCase();
+    
+    // Concatenate all searchable string fields (skip null/undefined)
+    const searchable = [
+      award.AwardNumber,
+      award.Title,
+      award.PrincipalInvestigator,
+      award.CoPINames,
+      award.Programs,
+      award.Abstract,
+      award.NSFOrganization,
+      award.ProgramManager,
+      award.StartDate,
+      award.EndDate,
+      award.AwardedAmountToDate,
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+  
+    return searchable.includes(lowerQuery);
+  };
+
+  // Filter awards by selected PIs and search text (select all PIs here since no sidebar)
   const filteredAwards = awards.filter(award => {
-    if (!searchText) return true;
-    const st = searchText.toLowerCase();
-    return (
-      award.PrincipalInvestigator.toLowerCase().includes(st) ||
-      award.Title.toLowerCase().includes(st)
-    );
+    // Apply your PI selection filter here if needed
+    return matchesSearch(award, searchText);
   });
 
   return (
@@ -41,7 +63,7 @@ export default function App() {
       <Header />
       <Box sx={{ padding: 3, flexGrow: 1, overflowY: 'auto' }}>
         <TextField
-          label="Search by PI or Title"
+          label="Search for anything"
           variant="outlined"
           value={searchText}
           onChange={e => setSearchText(e.target.value)}

@@ -2,12 +2,15 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
+import logo from '../assets/gmu-cec.png';
+
+
 export default function Header() {
   return (
     <header style={{ display: 'flex', alignItems: 'center', padding: '10px' }}>
-      {/* <a href="https://roars.dev" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
-        <img src={logo} alt="dino" style={{ height: '100px', marginRight: '10px' }} />
-      </a> */}
+      <a href="https://cec.gmu.edu/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
+        <img src={logo} alt="dino" style={{ height: '150px', marginRight: '10px' }} />
+      </a>
       <div>
         <div>
           <Typography

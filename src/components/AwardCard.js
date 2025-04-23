@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { styled } from '@mui/material/styles';
 import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 
 const StyledLink = styled(Link)({
   color: 'darkblue',
@@ -50,22 +51,37 @@ const AwardCard = ({ award }) => {
           </StyledLink>
         </Typography>
 
-        <Typography variant="subtitle1" gutterBottom>
-          Principal Investigator: <strong>{award.PrincipalInvestigator}</strong>
-        </Typography>
-
-        {award.CoPIName && (
-          <Typography variant="subtitle1" gutterBottom>
-            Co-PI(s): <strong>{award.CoPIName}</strong>
+        <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+          <Typography variant="subtitle1" component="div">
+            Principal Investigator:{' '}
+            <Box component="span" fontWeight="bold" color="error.main">
+              {award.PrincipalInvestigator}
+            </Box>
           </Typography>
-        )}
+          {award.CoPINames && (
+            <Typography variant="subtitle1" component="div">
+              Co-PI(s):{' '}
+              <Box component="span" fontWeight="bold" color="error.main">
+                {award.CoPINames}
+              </Box>
+            </Typography>
+          )}
+        </Box>
+
+
+        <Typography variant="subtitle1" component="div">
+            Program Manager:{' '}
+            <Box component="span" fontWeight="bold" >
+              {award.ProgramManager}
+            </Box>
+          </Typography>
 
         <Typography variant="body2" gutterBottom>
-          <strong>Start Date:</strong> {formatDate(award.StartDate)}
+          <strong>NSF Organization:</strong> {award.NSFOrganization}
         </Typography>
 
         <Typography variant="body2" gutterBottom>
-          <strong>End Date:</strong> {formatDate(award.EndDate)}
+          <strong>Date:</strong> {formatDate(award.StartDate)} - {formatDate(award.EndDate)}
         </Typography>
 
         <Typography variant="body2" gutterBottom>

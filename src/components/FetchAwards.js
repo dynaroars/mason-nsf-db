@@ -20,8 +20,11 @@ export async function fetchAwardsData(url) {
             StartDate: row.StartDate,
             EndDate: row.EndDate,
             AwardedAmountToDate: row.AwardedAmountToDate,
-            CoPIName: row["Co-PIName(s)"], //
+            CoPINames: row["Co-PIName(s)"], //
+            Programs: row["Program(s)"], //
             Abstract: row.Abstract,
+            NSFOrganization: row.NSFOrganization,
+            ProgramManager: row.ProgramManager,
             award_link: row.award_link || '', // optional URL field, add if present
             // add any other fields you need here
           }));
