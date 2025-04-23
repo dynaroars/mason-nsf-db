@@ -81,6 +81,10 @@ const AwardCard = ({ award }) => {
         </Typography>
 
         <Typography variant="body2" gutterBottom>
+          <strong>Programs:</strong> {award.Programs}
+        </Typography>
+
+        <Typography variant="body2" gutterBottom>
           <strong>Date:</strong> {formatDate(award.StartDate)} - {formatDate(award.EndDate)}
         </Typography>
 
