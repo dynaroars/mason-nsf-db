@@ -44,8 +44,8 @@ export default function Header() {
             component="div"
             sx={{ marginTop: 1, color: 'text.secondary', userSelect: 'text' }}
           >
-            <Link href="https://git.roars.dev/mason-nsf-db" target="_blank" rel="noopener" underline="hover">
-              git.roars.dev/mason-nsf-db
+            <Link href="https://code.roars.dev/mason-nsf-db" target="_blank" rel="noopener" underline="hover">
+            code.roars.dev/mason-nsf-db
             </Link>
           </Typography>
         </div>
